@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
 public class slope : MonoBehaviour
 {
     int angle;
     public InputField angleInput;
     Transform pivot;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        pivot =pivot = GetComponent<Transform>();
+        pivot =GameObject.Find("pivot").GetComponent<Transform>();
+
         
 
         
