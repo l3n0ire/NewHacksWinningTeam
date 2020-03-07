@@ -28,15 +28,25 @@ public class CameraController : MonoBehaviour
     void FixedUpdate() 
     {   
         
-        if (horizontalInput != 0 || verticalInput != 0) {
-            Vector3 newPosition = new Vector3(horizontalInput, 0, verticalInput) * moveSpeed + transform.position;
+        if (horizontalInput < 0) {
+            Vector3 newPosition = new Vector3(horizontalInput, 0, 0) * moveSpeed + transform.position;
+            transform.position = transform.position - Camera.main.transform.right * speed * Time.deltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
+        }
+        if (horizontalInput > 0) {
+            Vector3 newPosition = new Vector3(horizontalInput, 0, 0) * moveSpeed + transform.position;
+            transform.position = transform.position + Camera.main.transform.right * speed * Time.deltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
+        }
+        if (verticalInput < 0) {
+            Vector3 newPosition = new Vector3(0, 0, verticalInput) * moveSpeed + transform.position;
+            transform.position = transform.position - Camera.main.transform.forward * speed * Time.deltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
+        }
+        if (verticalInput > 0) {
+            Vector3 newPosition = new Vector3(0, 0, verticalInput) * moveSpeed + transform.position;
             transform.position = transform.position + Camera.main.transform.forward * speed * Time.deltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
         }
         if (Input.GetAxis("Mouse ScrollWheel") != 0) {
             Vector3 newPosition1 = new Vector3(0, -scrollInput, 0) * scrollSpeed + transform.position;
             transform.position = Vector3.Lerp(transform.position, newPosition1, 0.8f);
-
-            //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         }
     }
 
