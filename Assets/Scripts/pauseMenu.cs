@@ -29,7 +29,6 @@ public class pauseMenu : MonoBehaviour
                 cam.GetComponent<CameraController>().freeze = true;
                 panel.SetActive(isVisible);
             } else {
-                Time.timeScale = 1;
                 closeMenu();
             }
             
@@ -37,6 +36,7 @@ public class pauseMenu : MonoBehaviour
     }
 
     public void closeMenu(){
+        Time.timeScale = 1;
         isVisible=!isVisible;
         panel.SetActive(isVisible);
         cam.GetComponent<CameraController>().freeze = false;
