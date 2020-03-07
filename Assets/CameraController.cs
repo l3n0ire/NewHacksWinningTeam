@@ -10,10 +10,11 @@ public class CameraController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     float scrollInput;
+    float velocity = 100;
 
     float mouseX;
     float mouseY;
-    private Vector3 velocity = Vector3.zero;
+    float speed = 10;
     void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -29,7 +30,7 @@ public class CameraController : MonoBehaviour
         
         if (horizontalInput != 0 || verticalInput != 0) {
             Vector3 newPosition = new Vector3(horizontalInput, 0, verticalInput) * moveSpeed + transform.position;
-            transform.position = Vector3.Lerp(transform.position, newPosition, 0.8f);
+            transform.position = transform.position + Camera.main.transform.forward * speed * Time.deltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
         }
         if (Input.GetAxis("Mouse ScrollWheel") != 0) {
             Vector3 newPosition1 = new Vector3(0, -scrollInput, 0) * scrollSpeed + transform.position;
