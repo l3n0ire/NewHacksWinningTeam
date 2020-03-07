@@ -23,10 +23,14 @@ public class CameraController : MonoBehaviour
         mouseX = (Input.mousePosition.x / Screen.width ) - 0.5f;
         mouseY = (Input.mousePosition.y / Screen.height) - 0.5f;
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(!freeze)
         {
             transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
         } 
+=======
+        transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
+>>>>>>> parent of 817b595... update graph
 =======
         transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
 >>>>>>> parent of 817b595... update graph
