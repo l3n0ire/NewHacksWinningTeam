@@ -5,12 +5,13 @@ using UnityEngine;
 public class Freeze : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    GameObject[] obs;
+    public GameObject ob;
+    public CameraController cc;
+    bool paused = false; 
 
     void Start()
     {
-        obs = GameObject.FindGameObjectsWithTag("object");
+        ob = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -18,10 +19,15 @@ public class Freeze : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {  
-            foreach (GameObject ob in obs) 
+            paused = !paused;
+
+            if(paused) 
             {
-                ob.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                Time.timeScale = 0;
+            } else {
+                Time.timeScale = 1;
             }
+            
         }
     }
 }
