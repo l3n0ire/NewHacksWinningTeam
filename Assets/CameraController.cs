@@ -10,8 +10,6 @@ public class CameraController : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     float scrollInput;
-    float velocity = 100;
-
     float mouseX;
     float mouseY;
     float speed = 10;
