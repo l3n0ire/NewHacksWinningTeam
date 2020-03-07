@@ -12,7 +12,8 @@ public class CameraController : MonoBehaviour
     float scrollInput;
     float mouseX;
     float mouseY;
-    public float speed = 10;
+    float speed = 10;
+    public bool freeze = false;
 
     void Update()
     {
@@ -21,7 +22,10 @@ public class CameraController : MonoBehaviour
         scrollInput = Input.GetAxis("Mouse ScrollWheel");
         mouseX = (Input.mousePosition.x / Screen.width ) - 0.5f;
         mouseY = (Input.mousePosition.y / Screen.height) - 0.5f;
-        transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
+        if(!freeze)
+        {
+            transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
+        }
     }
 
     void FixedUpdate() 

@@ -6,21 +6,35 @@ public class pauseMenu : MonoBehaviour
 {
     public bool isVisible =false;
     public GameObject panel;
-    //public GameObject mainMenu;
-    //public GameObject resume;
+    bool paused = false;
+    public GameObject cam;
 
     // Start is called before the first frame update
     void Start()
     {
-                panel.SetActive(isVisible);
-
-        
+        panel.SetActive(isVisible);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {  
+            paused = !paused;
+
+            if(paused) 
+            {
+                Time.timeScale = 0;
+                isVisible = !isVisible;
+                cam.GetComponent<CameraController>().freeze = true;
+                panel.SetActive(isVisible);
+            } else {
+                Time.timeScale = 1;
+                cam.GetComponent<CameraController>().freeze = false;
+                closeMenu();
+            }
+            
+        }
     }
 
     public void closeMenu(){
