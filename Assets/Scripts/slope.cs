@@ -23,6 +23,9 @@ public class slope : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
+        
+    }
+    public void setSlope(){
         angle=Int32.Parse(angleInput.text.ToString());
         pivot.rotation = Quaternion.Euler(0,0,-angle);
         
