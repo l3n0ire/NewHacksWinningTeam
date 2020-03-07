@@ -20,14 +20,13 @@ public class pauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {  
-            paused = !paused;
-
-            if(paused) 
+            if(!paused)
             {
                 Time.timeScale = 0;
                 isVisible = !isVisible;
                 cam.GetComponent<CameraController>().freeze = true;
                 panel.SetActive(isVisible);
+                paused = !paused;
             } else {
                 closeMenu();
             }
@@ -36,9 +35,10 @@ public class pauseMenu : MonoBehaviour
     }
 
     public void closeMenu(){
-        Time.timeScale = 1;
         isVisible=!isVisible;
+        paused = !paused;
         panel.SetActive(isVisible);
+        Time.timeScale = 1;
         cam.GetComponent<CameraController>().freeze = false;
 
     }

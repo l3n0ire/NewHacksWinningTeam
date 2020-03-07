@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
         if(!freeze)
         {
             transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
-        }
+        } 
     }
 
     void FixedUpdate() 
