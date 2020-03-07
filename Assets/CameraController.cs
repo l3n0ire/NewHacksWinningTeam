@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     float mouseX;
     float mouseY;
     float speed = 10;
+    bool moveable = false;
     public bool freeze = false;
 
     void Update()
@@ -22,7 +23,11 @@ public class CameraController : MonoBehaviour
         scrollInput = Input.GetAxis("Mouse ScrollWheel");
         mouseX = (Input.mousePosition.x / Screen.width ) - 0.5f;
         mouseY = (Input.mousePosition.y / Screen.height) - 0.5f;
-        if(!freeze)
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            moveable = !moveable;
+        }
+        if(!freeze && moveable)
         {
             transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
         } 
@@ -30,23 +35,23 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate() 
     {
-        if (horizontalInput < 0) {
+        if (horizontalInput < 0 && moveable) {
             Vector3 newPosition = new Vector3(horizontalInput, 0, 0) * moveSpeed + transform.position;
             transform.position = transform.position - Camera.main.transform.right * speed * Time.fixedDeltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
         }
-        if (horizontalInput > 0) {
+        if (horizontalInput > 0 && moveable) {
             Vector3 newPosition = new Vector3(horizontalInput, 0, 0) * moveSpeed + transform.position;
             transform.position = transform.position + Camera.main.transform.right * speed * Time.fixedDeltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
         }
-        if (verticalInput < 0) {
+        if (verticalInput < 0 && moveable) {
             Vector3 newPosition = new Vector3(0, 0, verticalInput) * moveSpeed + transform.position;
             transform.position = transform.position - Camera.main.transform.forward * speed * Time.fixedDeltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
         }
-        if (verticalInput > 0) {
+        if (verticalInput > 0 && moveable) {
             Vector3 newPosition = new Vector3(0, 0, verticalInput) * moveSpeed + transform.position;
             transform.position = transform.position + Camera.main.transform.forward * speed * Time.fixedDeltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
         }
-        if (Input.GetAxis("Mouse ScrollWheel") != 0) {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && moveable) {
             Vector3 newPosition1 = new Vector3(0, -scrollInput, 0) * scrollSpeed + transform.position;
             transform.position = Vector3.Lerp(transform.position, newPosition1, 0.8f);
         }
