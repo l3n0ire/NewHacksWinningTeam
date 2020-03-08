@@ -5,14 +5,12 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     // Start is called before the first frame update
-    float moveSpeed = 10.0f;
-    float scrollSpeed = 10.0f;
+    float moveSpeed = 5.0f;
     float horizontalInput;
     float verticalInput;
-    float scrollInput;
-    float mouseX;
-    float mouseY;
     float speed = 10;
+    private float yaw = 0.0f;
+    private float pitch = 0.0f;
     bool moveable = false;
     public bool freeze = false;
 
@@ -20,17 +18,20 @@ public class CameraController : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        mouseX = (Input.mousePosition.x / Screen.width ) - 0.5f;
-        mouseY = (Input.mousePosition.y / Screen.height) - 0.5f;
+
         if(Input.GetKeyDown(KeyCode.F))
         {
             moveable = !moveable;
         }
         if(!freeze && moveable)
         {
-            transform.localRotation = Quaternion.Euler (new Vector4 (-1f * (mouseY * 180f), mouseX * 360f, transform.localRotation.z));
-        } 
+            Cursor.visible = false;
+            yaw += speed * Input.GetAxis("Mouse X");
+            pitch -= speed * Input.GetAxis("Mouse Y");
+            transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        } else {
+            Cursor.visible = true;
+        }
     }
 
     void FixedUpdate() 
@@ -50,10 +51,6 @@ public class CameraController : MonoBehaviour
         if (verticalInput > 0 && moveable) {
             Vector3 newPosition = new Vector3(0, 0, verticalInput) * moveSpeed + transform.position;
             transform.position = transform.position + Camera.main.transform.forward * speed * Time.fixedDeltaTime;//Vector3.Lerp(transform.position, newPosition, 0.8f);
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") != 0 && moveable) {
-            Vector3 newPosition1 = new Vector3(0, -scrollInput, 0) * scrollSpeed + transform.position;
-            transform.position = Vector3.Lerp(transform.position, newPosition1, 0.8f);
         }
         
     }
