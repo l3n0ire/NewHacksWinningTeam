@@ -4190,6 +4190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d466c60eabe25a46a53ab40a9052eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PortalTo: TeleportRoom
 --- !u!54 &2107928987
 Rigidbody:
   m_ObjectHideFlags: 0
