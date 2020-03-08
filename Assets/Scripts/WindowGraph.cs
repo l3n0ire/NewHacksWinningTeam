@@ -13,6 +13,7 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private GameObject Ball;
     [SerializeField] private GameObject MeasuringPoint;
     private List<int> valueList = new List<int>() {};
+    private bool graphing = false;
 
 
     private void Awake()
@@ -23,7 +24,16 @@ public class WindowGraph : MonoBehaviour
     }
 
     public void runGraphFromButton(){
-        StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
+        if(!graphing){
+            StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
+            graphing = true;
+        }
+        else{
+            StopAllCoroutines();
+            valueList.Clear();
+            graphing = false;
+        }
+        
     }
     private void addPointtoGraph()
     {
