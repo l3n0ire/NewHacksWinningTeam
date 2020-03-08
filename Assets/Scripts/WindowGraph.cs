@@ -13,6 +13,7 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private GameObject Ball;
     [SerializeField] private GameObject MeasuringPoint;
     private List<int> valueList = new List<int>() {};
+    private bool graphing = false;
 
 
     public void Awake()
@@ -20,10 +21,20 @@ public class WindowGraph : MonoBehaviour
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("labelTemplateY").GetComponent<RectTransform>();
-
-        StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
     }
 
+    public void runGraphFromButton(){
+        if(!graphing){
+            StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
+            graphing = true;
+        }
+        else{
+            StopAllCoroutines();
+            valueList.Clear();
+            graphing = false;
+        }
+        
+    }
     private void addPointtoGraph()
     {
         float dist = Vector3.Distance(Ball.transform.position, MeasuringPoint.transform.position);
