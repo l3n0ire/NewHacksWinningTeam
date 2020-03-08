@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class Teleport : MonoBehaviour
 {
     // Start is called before the first frame update
+    public string PortalTo;
     void Start()
     {
     }
 
     // Update is called once per frame
     void OnCollisionEnter(Collision other) {
-        SceneManager.LoadScene("Newton");
+        SceneManager.LoadScene(PortalTo);
     }
 }

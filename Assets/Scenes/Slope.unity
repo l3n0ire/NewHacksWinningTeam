@@ -2582,10 +2582,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0a243a9ef624802a07e340847adec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 0}
+  dropdown: {fileID: 333965113}
   material: 
-  physicMaterials: []
-  materials: []
+  physicMaterials:
+  - {fileID: 13400000, guid: 599c083cdccc0b94e921591e3759edda, type: 2}
+  - {fileID: 13400000, guid: cea72474b8434784db22e5aa4b1c7bb0, type: 2}
+  - {fileID: 13400000, guid: 2618a85ac22c8a8418a350408d248d23, type: 2}
+  materials:
+  - {fileID: 2100000, guid: fd05b8a8b651145e9b794ac247eee04d, type: 2}
+  - {fileID: 2100000, guid: 1c6426c92398a406c9f8d0ee98a7349c, type: 2}
+  - {fileID: 2100000, guid: ccbc92aefc9e163468f1bbdc49a16cef, type: 2}
 --- !u!1 &1388546302
 GameObject:
   m_ObjectHideFlags: 0
@@ -4166,8 +4172,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107928981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.25, y: 1.45, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 21.25, y: 3.12, z: 9.69}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Newton.unity
     guid: b442509b8caaa184e95c1a0b98e90030
+  - enabled: 1
+    path: Assets/Scenes/Projectile.unity
+    guid: 5cc65f986dc2446e4963c45821f591d4
   m_configObjects: {}
