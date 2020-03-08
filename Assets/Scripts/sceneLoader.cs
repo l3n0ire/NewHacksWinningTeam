@@ -18,7 +18,7 @@ public class sceneLoader : MonoBehaviour
     }
 
     public void loadMain(){
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Slope");
     }
 
     public void loadStart(){
