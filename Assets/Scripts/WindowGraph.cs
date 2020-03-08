@@ -15,7 +15,7 @@ public class WindowGraph : MonoBehaviour
     private List<int> valueList = new List<int>() {};
 
 
-    private void Awake()
+    public void Awake()
     {
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
@@ -85,7 +85,7 @@ public class WindowGraph : MonoBehaviour
         }
     }
 
-    private void clearOldGraph()
+    public void clearOldGraph()
     {
         foreach(Transform child in graphContainer) {
             if (child.gameObject.tag == "DeleteThis"){
