@@ -8,7 +8,7 @@ public class slope : MonoBehaviour
     float angle;
     public InputField angleInput;
     Transform pivot;
-    Transform myObject;
+    GameObject myObject;
     Transform slopeObject;
     
 
@@ -16,7 +16,7 @@ public class slope : MonoBehaviour
     void Start()
     {
         pivot =GameObject.Find("pivot").GetComponent<Transform>();
-        myObject =GameObject.Find("cube").GetComponent<Transform>();
+        myObject =GameObject.Find("cube");
         slopeObject = GameObject.Find("slope").GetComponent<Transform>();
 
         angle=40;
@@ -34,14 +34,14 @@ public class slope : MonoBehaviour
     public void setSlope(){
         angle=float.Parse(angleInput.text.ToString());
         pivot.rotation = Quaternion.Euler(0,0,-angle);
-        myObject.position=slopeObject.position+ new Vector3(1.5f,1.5f,1.5f);
-        myObject.rotation = Quaternion.Euler(0,0,-angle);
+        myObject.transform.position=slopeObject.position+ new Vector3(1.5f,1.5f,1.5f);
+        myObject.transform.rotation = Quaternion.Euler(0,0,-angle);
         
     }
     public void resetObject() {
-                myObject.rotation = Quaternion.Euler(0,0,-angle);
-
-        myObject.position=slopeObject.position+ new Vector3(1.4f,1.4f,1.4f);
+        myObject.transform.rotation = Quaternion.Euler(0,0,-angle);
+        myObject.transform.position=slopeObject.position+ new Vector3(1.4f,1.4f,1.4f);
+        myObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         
     }
