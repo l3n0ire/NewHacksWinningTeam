@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 public class slope : MonoBehaviour
 {
-    int angle;
+    float angle;
     public InputField angleInput;
     Transform pivot;
     Transform myObject;
@@ -17,6 +17,9 @@ public class slope : MonoBehaviour
     {
         pivot =GameObject.Find("pivot").GetComponent<Transform>();
         myObject =GameObject.Find("cube").GetComponent<Transform>();
+        slopeObject = GameObject.Find("slope").GetComponent<Transform>();
+
+        angle=40;
 
         
 
@@ -29,11 +32,16 @@ public class slope : MonoBehaviour
         
     }
     public void setSlope(){
-        angle=Int32.Parse(angleInput.text.ToString());
+        angle=float.Parse(angleInput.text.ToString());
         pivot.rotation = Quaternion.Euler(0,0,-angle);
-        slopeObject = GameObject.Find("slope").GetComponent<Transform>();
-        myObject.position=slopeObject.position+ new Vector3(1,1,1);
+        myObject.position=slopeObject.position+ new Vector3(1.5f,1.5f,1.5f);
         myObject.rotation = Quaternion.Euler(0,0,-angle);
+        
+    }
+    public void resetObject() {
+        myObject.position=slopeObject.position+ new Vector3(1.5f,1.5f,1.5f);
+        myObject.rotation = Quaternion.Euler(0,0,-angle);
+
         
     }
 }
