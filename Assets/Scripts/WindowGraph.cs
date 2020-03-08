@@ -13,9 +13,10 @@ public class WindowGraph : MonoBehaviour
     [SerializeField] private GameObject Ball;
     [SerializeField] private GameObject MeasuringPoint;
     private List<int> valueList = new List<int>() {};
+    private bool graphing = false;
 
 
-    private void Awake()
+    public void Awake()
     {
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
@@ -23,7 +24,16 @@ public class WindowGraph : MonoBehaviour
     }
 
     public void runGraphFromButton(){
-        StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
+        if(!graphing){
+            StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
+            graphing = true;
+        }
+        else{
+            StopAllCoroutines();
+            valueList.Clear();
+            graphing = false;
+        }
+        
     }
     private void addPointtoGraph()
     {
@@ -86,7 +96,7 @@ public class WindowGraph : MonoBehaviour
         }
     }
 
-    private void clearOldGraph()
+    public void clearOldGraph()
     {
         foreach(Transform child in graphContainer) {
             if (child.gameObject.tag == "DeleteThis"){
