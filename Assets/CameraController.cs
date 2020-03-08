@@ -14,17 +14,19 @@ public class CameraController : MonoBehaviour
     bool moveable = false;
     public bool freeze = false;
     int currentCamera;
-    GameObject closest;
+    GameObject[] closest;
     Camera[] cams;
     Vector3 move;
 
     void Start() 
     {
-        cams = GameObject.FindObjectsOfType<Camera>();   
+        cams = GameObject.FindObjectsOfType<Camera>();  
+        closest = new GameObject[cams.Length]; 
         for(int i=0; i < cams.Length; i++)
         {
             if(cams[i] != Camera.main)
             {
+                closest[i] = FindClosestObject(cams[i]);
                 cams[i].enabled = false;    
             } else {
                 currentCamera = i;
@@ -61,15 +63,13 @@ public class CameraController : MonoBehaviour
         {
             handleCameraMovement();
         } else {
-            closest = FindClosestObject(cams[currentCamera]);
-            handleObjectMovement(closest);
-            cams[currentCamera].transform.position = closest.transform.position + new Vector3(0, 5, -20); 
+            handleObjectMovement(closest[currentCamera]);
+            cams[currentCamera].transform.position = closest[currentCamera].transform.position + new Vector3(0, 5, -20); 
         }
     }
-    public void freeMove(){
-                    moveable = !moveable;
-
-
+    public void freeMove()
+    {
+        moveable = !moveable;
     }
 
     public void follow(){
@@ -90,9 +90,8 @@ public class CameraController : MonoBehaviour
         {
             handleCameraMovement();
         } else {
-            closest = FindClosestObject(cams[currentCamera]);
-            handleObjectMovement(closest);
-            cams[currentCamera].transform.position = closest.transform.position + new Vector3(0, 5, -20); 
+            handleObjectMovement(closest[currentCamera]);
+            cams[currentCamera].transform.position = closest[currentCamera].transform.position + new Vector3(0, 5, -20); 
         }
     }
 
