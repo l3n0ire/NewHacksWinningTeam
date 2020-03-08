@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Slope.unity
-    guid: ec49d181c8250458cb30ad039c65c641
-  - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: bff09000e2a024de6b2f6ed727da23da
   - enabled: 1
@@ -29,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Momentum.unity
     guid: 3a96e92817a420442b644c5bcb22ecc9
+  - enabled: 1
+    path: Assets/Scenes/Slope.unity
+    guid: ec49d181c8250458cb30ad039c65c641
   m_configObjects: {}
