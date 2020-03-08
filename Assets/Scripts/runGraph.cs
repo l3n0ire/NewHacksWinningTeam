@@ -7,6 +7,10 @@ public class runGraph : MonoBehaviour
    [SerializeField] private GameObject WG;
     private void Awake() {
     }
+    void Start(){
+                WG.GetComponent<WindowGraph>().runGraphFromButton();
+
+    }
 
     public void pressButton(){
         
