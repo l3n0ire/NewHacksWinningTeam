@@ -39,8 +39,9 @@ public class slope : MonoBehaviour
         
     }
     public void resetObject() {
-        myObject.position=slopeObject.position+ new Vector3(1.5f,1.5f,1.5f);
-        myObject.rotation = Quaternion.Euler(0,0,-angle);
+                myObject.rotation = Quaternion.Euler(0,0,-angle);
+
+        myObject.position=slopeObject.position+ new Vector3(1.4f,1.4f,1.4f);
 
         
     }
