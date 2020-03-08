@@ -66,6 +66,35 @@ public class CameraController : MonoBehaviour
             cams[currentCamera].transform.position = closest.transform.position + new Vector3(0, 5, -20); 
         }
     }
+    public void freeMove(){
+                    moveable = !moveable;
+
+
+    }
+
+    public void follow(){
+
+        
+            if(currentCamera < cams.Length - 1)
+            {
+                cams[currentCamera].enabled = false;
+                cams[currentCamera + 1].enabled = true;
+                currentCamera++;
+            } else {
+                cams[currentCamera].enabled = false;
+                cams[0].enabled = true;
+                currentCamera = 0; 
+            }
+        
+        if(cams[currentCamera] == Camera.main)
+        {
+            handleCameraMovement();
+        } else {
+            closest = FindClosestObject(cams[currentCamera]);
+            handleObjectMovement(closest);
+            cams[currentCamera].transform.position = closest.transform.position + new Vector3(0, 5, -20); 
+        }
+    }
 
     void handleCameraLock()
     {
