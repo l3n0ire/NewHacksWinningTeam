@@ -18,7 +18,7 @@ public class sceneLoader : MonoBehaviour
     }
 
     public void loadMain(){
-        SceneManager.LoadScene("Slope");
+        SceneManager.LoadScene("TeleportRoom");
     }
 
     public void loadStart(){
