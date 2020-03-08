@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TeleportRoom.unity
     guid: 0e73cf6a044047444bf0db7560ed0e3b
   - enabled: 1
+    path: Assets/Scenes/TeleportRoom.unity
+    guid: 0e73cf6a044047444bf0db7560ed0e3b
+  - enabled: 1
     path: Assets/Scenes/Momentum.unity
     guid: 3a96e92817a420442b644c5bcb22ecc9
   m_configObjects: {}
