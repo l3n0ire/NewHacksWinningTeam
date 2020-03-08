@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class sceneLoader : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
+    GameObject myObject;
+    Vector3 velocity;
     // Start is called before the first frame update
     void Start()
     {
+        myObject=GameObject.Find("Sphere");
+        velocity = new Vector3(10,10,0);
+        myObject.GetComponent<Rigidbody>().velocity=velocity;
+
         
     }
 
@@ -17,11 +22,7 @@ public class sceneLoader : MonoBehaviour
         
     }
 
-    public void loadMain(){
-        SceneManager.LoadScene("Slope");
-    }
+    public void launch(){
 
-    public void loadStart(){
-        SceneManager.LoadScene("StartScene");
     }
 }

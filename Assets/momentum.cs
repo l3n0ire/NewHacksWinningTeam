@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class sceneLoader : MonoBehaviour
+public class momentum : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,13 +14,5 @@ public class sceneLoader : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void loadMain(){
-        SceneManager.LoadScene("Slope");
-    }
-
-    public void loadStart(){
-        SceneManager.LoadScene("StartScene");
     }
 }
