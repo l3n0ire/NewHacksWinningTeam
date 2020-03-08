@@ -34,8 +34,7 @@ public class slope : MonoBehaviour
     public void setSlope(){
         angle=float.Parse(angleInput.text.ToString());
         pivot.rotation = Quaternion.Euler(0,0,-angle);
-        myObject.transform.position=slopeObject.position+ new Vector3(1.5f,1.5f,1.5f);
-        myObject.transform.rotation = Quaternion.Euler(0,0,-angle);
+        
         
     }
     public void resetObject() {
