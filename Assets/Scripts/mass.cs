@@ -29,7 +29,6 @@ public class mass : MonoBehaviour
     public void changeMass(){
         massData = float.Parse(massInput.text.ToString());
         rb.mass=massData;
-        slopeScript.resetObject();
         
 
         
