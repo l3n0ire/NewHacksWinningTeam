@@ -20,10 +20,11 @@ public class WindowGraph : MonoBehaviour
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("labelTemplateY").GetComponent<RectTransform>();
-
-        StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
     }
 
+    public void runGraphFromButton(){
+        StartCoroutine(InvokeMethod(addPointtoGraph, 0.5f, 12));
+    }
     private void addPointtoGraph()
     {
         float dist = Vector3.Distance(Ball.transform.position, MeasuringPoint.transform.position);
