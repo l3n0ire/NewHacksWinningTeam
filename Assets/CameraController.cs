@@ -83,9 +83,12 @@ public class CameraController : MonoBehaviour
     void handleObjectMovement(GameObject ob)
     {
         ob.transform.Translate(move * 10 * Time.deltaTime, Space.World);
-            if(move!=Vector3.zero){
-                ob.transform.rotation = Quaternion.Slerp(ob.transform.rotation, Quaternion.LookRotation(move), 0.15F);
-            }
+        if(move!=Vector3.zero){
+            ob.transform.rotation = Quaternion.Slerp(ob.transform.rotation, Quaternion.LookRotation(move), 0.15F);
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            ob.GetComponent<Rigidbody>().AddForce(new Vector3(0, 100, 0));
+        }
     }
 
     void handleCameraMovement()
